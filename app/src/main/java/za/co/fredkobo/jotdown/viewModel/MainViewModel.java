@@ -1,32 +1,36 @@
 package za.co.fredkobo.jotdown.viewModel;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
+import android.util.Log;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.fredkobo.jotdown.MainViewInterface;
+import za.co.fredkobo.jotdown.db.JotDownDatabase;
 import za.co.fredkobo.jotdown.model.JournalEntry;
 
 /**
  * Created by F5094712 on 2018/06/26.
  */
 
-public class MainViewModel implements MainViewModelInterface {
+public class MainViewModel extends AndroidViewModel {
 
-    private MainViewInterface mainViewInterface;
-    public MainViewModel(MainViewInterface viewInterface){
-        this.mainViewInterface = viewInterface;
+    // Constant for logging
+    private static final String TAG = MainViewModel.class.getSimpleName();
+
+    private LiveData<List<JournalEntry>> journalEntries;
+
+    public MainViewModel(Application application) {
+        super(application);
+        JotDownDatabase database = JotDownDatabase.getInstance(this.getApplication());
+        Log.d(TAG, "Actively retrieving the entries from the Databasae");
+        journalEntries = database.journalEntryDao().getAllEntries();
     }
-    @Override
-    public List<JournalEntry> getAllJornalEntries() {
-        JournalEntry entry = new JournalEntry();
-        entry.setId(1);
-        entry.setTitle("The tragedy of the commons");
-        entry.setContentText("The tragedy of the commons is a term that explains a phenomenon in which the is an abuse of common resources among a particular group of people.");
-        entry.setLastEditDateTime(new Date(1220227200L * 1000));
-        List<JournalEntry> entries = new ArrayList<>();
-        entries.add(entry);
-        mainViewInterface.onGetAllEntriesSuccess(entries);
-        return entries;
+
+    public LiveData<List<JournalEntry>> getTasks() {
+        return journalEntries;
     }
 }
