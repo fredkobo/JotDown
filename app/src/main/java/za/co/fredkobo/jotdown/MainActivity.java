@@ -1,16 +1,30 @@
 package za.co.fredkobo.jotdown;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
+import za.co.fredkobo.jotdown.model.JournalEntry;
+import za.co.fredkobo.jotdown.viewModel.MainViewModel;
+import za.co.fredkobo.jotdown.viewModel.MainViewModelInterface;
+
+public class MainActivity extends AppCompatActivity implements MainViewInterface {
+
+    private RecyclerView entryRecyclerView;
+    private EntryRecyclerViewAdapter entryAdapter;
+    private List<JournalEntry> journalEntryList;
+    private MainViewModelInterface viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,14 +32,25 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        viewModel = new MainViewModel(this);
+
+        final Intent editEntryIntent = new Intent(this, EditEntryActivity.class);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(editEntryIntent);
             }
         });
+
+        entryRecyclerView = (RecyclerView) findViewById(R.id.entry_recyclerview);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.getAllJornalEntries();
     }
 
     @Override
@@ -48,5 +73,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onGetAllEntriesSuccess(List<JournalEntry> journalEntries) {
+        entryAdapter = new EntryRecyclerViewAdapter(journalEntries);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        entryRecyclerView.setLayoutManager(mLayoutManager);
+        entryRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        entryRecyclerView.setAdapter(entryAdapter);
     }
 }
