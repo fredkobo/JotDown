@@ -1,4 +1,4 @@
-package za.co.fredkobo.jotdown;
+package za.co.fredkobo.jotdown.helpers;
 
 import android.os.Handler;
 import android.os.Looper;

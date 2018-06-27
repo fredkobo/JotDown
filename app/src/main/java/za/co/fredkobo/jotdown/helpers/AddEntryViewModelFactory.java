@@ -1,4 +1,4 @@
-package za.co.fredkobo.jotdown;
+package za.co.fredkobo.jotdown.helpers;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

@@ -1,4 +1,4 @@
-package za.co.fredkobo.jotdown;
+package za.co.fredkobo.jotdown.view;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -14,6 +14,9 @@ import android.widget.EditText;
 
 import java.util.Date;
 
+import za.co.fredkobo.jotdown.helpers.AddEntryViewModelFactory;
+import za.co.fredkobo.jotdown.helpers.AppExecutors;
+import za.co.fredkobo.jotdown.R;
 import za.co.fredkobo.jotdown.db.JotDownDatabase;
 import za.co.fredkobo.jotdown.model.JournalEntry;
 import za.co.fredkobo.jotdown.viewModel.AddEntryViewModel;

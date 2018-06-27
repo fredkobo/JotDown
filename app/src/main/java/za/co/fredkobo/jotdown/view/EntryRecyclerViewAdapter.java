@@ -1,4 +1,4 @@
-package za.co.fredkobo.jotdown;
+package za.co.fredkobo.jotdown.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
+import za.co.fredkobo.jotdown.R;
 import za.co.fredkobo.jotdown.model.JournalEntry;
 
 /**
