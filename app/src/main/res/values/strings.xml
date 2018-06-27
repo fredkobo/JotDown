@@ -20,4 +20,6 @@
     <string name="prompt_title">Title</string>
     <string name="edit_entry">Edit entry</string>
     <string name="update_button">Update journal entry</string>
+    <string name="save_entry">Save journal entry</string>
+    <string name="hint_enter_text">Please enter text here</string>
 </resources>

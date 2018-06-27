@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements EntryRecyclerView
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Intent editEntryIntent = new Intent(this, EditEntryActivity.class);
+        final Intent editEntryIntent = new Intent(this, AddEntryActivity.class);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements EntryRecyclerView
 
     @Override
     public void onItemClickListener(int itemId) {
-
+        Intent intent = new Intent(MainActivity.this, AddEntryActivity.class);
+        intent.putExtra(AddEntryActivity.EXTRA_ENTRY_ID, itemId);
+        startActivity(intent);
     }
 }

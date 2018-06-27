@@ -62,7 +62,7 @@ public class EntryRecyclerViewAdapter extends RecyclerView.Adapter<EntryRecycler
     }
 
     public void setJournalEntries(List<JournalEntry> journalEntries) {
-        journalEntries = journalEntries;
+        this.journalEntries = journalEntries;
         notifyDataSetChanged();
     }
 

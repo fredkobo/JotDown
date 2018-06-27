@@ -17,7 +17,7 @@ import za.co.fredkobo.jotdown.model.JournalEntry;
  */
 @Dao
 public interface JournalEntryDao {
-    @Query("SELECT * FROM entry")
+    @Query("SELECT * FROM journal_entry")
     LiveData<List<JournalEntry>> getAllEntries();
 
     @Insert
@@ -29,6 +29,6 @@ public interface JournalEntryDao {
     @Delete
     void deleteEntry(JournalEntry journalEntry);
 
-    @Query("SELECT * FROM task WHERE id = :id")
+    @Query("SELECT * FROM journal_entry WHERE id = :id")
     LiveData<JournalEntry> loadJournalEntryById(int id);
 }

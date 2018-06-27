@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EditEntryActivity"
+            android:name=".AddEntryActivity"
             android:label="@string/title_activity_edit_entry" />
         <activity
             android:name=".ViewEntryActivity"

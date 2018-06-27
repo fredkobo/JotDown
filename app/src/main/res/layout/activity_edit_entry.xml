@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="za.co.fredkobo.jotdown.EditEntryActivity">
+    android:padding="@dimen/activity_page_padding"
+    tools:context="za.co.fredkobo.jotdown.AddEntryActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
         android:id="@+id/content_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/hint_enter_text"
         android:ems="10"
         android:inputType="textMultiLine" />
 
@@ -36,7 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="16dp"
-        android:text="@string/edit_entry"
+        android:textAllCaps="false"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:text="@string/save_entry"
         android:textStyle="bold" />
 
 

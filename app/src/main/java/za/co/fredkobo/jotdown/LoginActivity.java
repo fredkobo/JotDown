@@ -21,16 +21,12 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import za.co.fredkobo.jotdown.viewModel.LoginViewModel;
-import za.co.fredkobo.jotdown.viewModel.LoginViewModelInterface;
-
-public class LoginActivity extends AppCompatActivity implements LoginViewInterface {
+public class LoginActivity extends AppCompatActivity {
     private String TAG = LoginActivity.class.getSimpleName();
     // UI references.
 
     private View progressView;
     private SignInButton googleSignInButton;
-    private LoginViewModelInterface viewModel;
     private int RC_SIGN_IN = 1001;
 
     private GoogleSignInClient googleSignInClient;
@@ -45,8 +41,6 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
         googleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        viewModel = new LoginViewModel(this);
 
         googleSignInButton = (SignInButton) findViewById(R.id.google_sign_in_button);
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
@@ -138,14 +132,12 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
         }
     }
 
-    @Override
     public void onSignInSuccess() {
         Intent mainActivityIntent = new Intent(this, MainActivity.class);
         startActivity(mainActivityIntent);
         finish();
     }
 
-    @Override
     public void onSignInFailure() {
 
     }
