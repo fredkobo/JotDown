@@ -22,7 +22,6 @@ public class AddEntryViewModelFactory extends ViewModelProvider.NewInstanceFacto
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        //noinspection unchecked
         return (T) new AddEntryViewModel(jtDb, mTaskId);
     }
 }

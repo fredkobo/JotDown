@@ -16,7 +16,6 @@ import za.co.fredkobo.jotdown.model.JournalEntry;
 
 public class MainViewModel extends AndroidViewModel {
 
-    // Constant for logging
     private static final String TAG = MainViewModel.class.getSimpleName();
 
     private LiveData<List<JournalEntry>> journalEntries;
