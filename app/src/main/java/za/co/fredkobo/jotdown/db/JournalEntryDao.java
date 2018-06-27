@@ -21,7 +21,7 @@ public interface JournalEntryDao {
     LiveData<List<JournalEntry>> getAllEntries();
 
     @Insert
-    void insertEntry(JournalEntry journalEntrie);
+    void insertEntry(JournalEntry journalEntry);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateEntry(JournalEntry journalEntry);

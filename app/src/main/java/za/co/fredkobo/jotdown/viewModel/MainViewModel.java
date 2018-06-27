@@ -5,8 +5,6 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.util.Log;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import za.co.fredkobo.jotdown.db.JotDownDatabase;
