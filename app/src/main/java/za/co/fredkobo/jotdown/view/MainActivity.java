@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements EntryRecyclerView
     private String TAG = MainActivity.class.getSimpleName();
     private RecyclerView entryRecyclerView;
     private EntryRecyclerViewAdapter entryAdapter;
-    private List<JournalEntry> journalEntryList;
     private JotDownDatabase jotDownDb;
 
     @Override
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements EntryRecyclerView
         entryRecyclerView = (RecyclerView) findViewById(R.id.entry_recyclerview);
         entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize the adapter and attach it to the RecyclerView
         entryAdapter = new EntryRecyclerViewAdapter(this, this);
         entryRecyclerView.setAdapter(entryAdapter);
 
@@ -61,10 +59,8 @@ public class MainActivity extends AppCompatActivity implements EntryRecyclerView
                 return false;
             }
 
-            // Called when a user swipes left or right on a ViewHolder
             @Override
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                // Here is where you'll implement swipe to delete
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {

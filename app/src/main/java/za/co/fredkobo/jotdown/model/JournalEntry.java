@@ -21,7 +21,7 @@ public class JournalEntry {
     @ColumnInfo(name = "last_edited_at")
     private Date lastEditDateTime;
 
-    public JournalEntry(String title, String contentText, Date lastEditDateTime){
+    public JournalEntry(String title, String contentText, Date lastEditDateTime) {
         this.title = title;
         this.contentText = contentText;
         this.lastEditDateTime = lastEditDateTime;

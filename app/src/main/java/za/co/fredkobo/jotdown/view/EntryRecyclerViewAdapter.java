@@ -21,7 +21,7 @@ import za.co.fredkobo.jotdown.model.JournalEntry;
 
 public class EntryRecyclerViewAdapter extends RecyclerView.Adapter<EntryRecyclerViewAdapter.EntryViewHolder> {
     // Constant for date format
-    private static final String DATE_FORMAT = "dd/MM/yyy";
+    private static final String DATE_FORMAT = "dd/MM/yyy HH:mm";
 
     private final ItemClickListener itemClickListener;
     private Context context;
@@ -67,7 +67,7 @@ public class EntryRecyclerViewAdapter extends RecyclerView.Adapter<EntryRecycler
         notifyDataSetChanged();
     }
 
-    public class EntryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class EntryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView title;
         public TextView content;
         public TextView lastEdit;
